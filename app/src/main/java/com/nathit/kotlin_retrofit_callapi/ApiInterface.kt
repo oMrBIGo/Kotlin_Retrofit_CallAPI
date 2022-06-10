@@ -5,6 +5,6 @@ import retrofit2.http.GET
 
 interface ApiInterface {
 
-    @GET("posts")   // https://jsonplaceholder.typicode.com/[posts] <-
+    @GET("photos")   // https://jsonplaceholder.typicode.com/[posts] <-
     fun getData(): Call<List<DataModelItem>>    //เรียกใช้ DataModelItem มาแสดงเป็น List
 }

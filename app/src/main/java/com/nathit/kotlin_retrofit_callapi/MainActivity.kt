@@ -1,5 +1,6 @@
 package com.nathit.kotlin_retrofit_callapi
 
+import android.annotation.SuppressLint
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
@@ -48,19 +49,15 @@ class MainActivity : AppCompatActivity() {
         val retrofitData = retrofitBuilder.getData()
 
         retrofitData.enqueue(object : Callback<List<DataModelItem>?> {
+            @SuppressLint("NotifyDataSetChanged")
             override fun onResponse(
                 call: Call<List<DataModelItem>?>,
                 response: Response<List<DataModelItem>?>
             ) {
                 val responseBody = response.body()!!
-
                 dataAdapter = DataAdapter(baseContext, responseBody)
                 dataAdapter.notifyDataSetChanged()
                 rv.adapter = dataAdapter
-
-
-
-
             }
 
             override fun onFailure(call: Call<List<DataModelItem>?>, t: Throwable) {
@@ -68,6 +65,5 @@ class MainActivity : AppCompatActivity() {
             }
         })
     }
-
 
 }
